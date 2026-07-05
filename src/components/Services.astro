@@ -1,0 +1,139 @@
+---
+// Services.astro
+
+const services = [
+  {
+    number: "01",
+    title: "Corte de Precisión",
+    desc: "Un corte adaptado a tu estructura facial y estilo personal. Incluye lavado, secado y peinado con productos de alta gama.",
+    detail: "60 min",
+    price: "$25",
+    img: "/images/haircut.png",
+    alt: "Corte de cabello premium",
+  },
+  {
+    number: "02",
+    title: "Ritual de Barba",
+    desc: "Toalla caliente, perfilado con navaja recta, aceites esenciales y bálsamos hidratantes para una barba impecable.",
+    detail: "45 min",
+    price: "$15",
+    img: "/images/beard.png",
+    alt: "Arreglo de barba",
+  },
+  {
+    number: "03",
+    title: "Experiencia Completa",
+    desc: "La fusión de corte y barba, más masaje capilar, tratamiento hidratante y una bebida de cortesía. El ritual definitivo.",
+    detail: "90 min",
+    price: "$45",
+    img: "/images/tools.png",
+    alt: "Experiencia completa",
+  },
+];
+---
+
+<section id="services" class="bg-zinc-950 py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="mb-20">
+      <p class="text-[#C9A84C] text-xs tracking-[0.35em] uppercase mb-4 font-light">Lo que hacemos</p>
+      <div class="flex items-end gap-8">
+        <h2 class="font-display font-light text-white leading-none" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+          Servicios
+        </h2>
+        <div class="mb-2 flex-1 h-px bg-white/5 hidden sm:block"></div>
+      </div>
+    </div>
+
+    <!-- Services list -->
+    <div class="divide-y divide-white/5">
+      {services.map((s, i) => (
+        <div class="group grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 py-12 hover:pl-4 transition-all duration-500">
+
+          <!-- Left: text content -->
+          <div class="grid grid-cols-[auto_1fr] gap-6 md:gap-10 items-start">
+            <span class="text-zinc-700 font-display font-light text-5xl leading-none group-hover:text-[#C9A84C]/30 transition-colors duration-500">
+              {s.number}
+            </span>
+            <div>
+              <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                <h3 class="font-display font-light text-white text-2xl md:text-3xl group-hover:text-[#C9A84C] transition-colors duration-500">
+                  {s.title}
+                </h3>
+                <span class="text-xs text-zinc-600 tracking-widest uppercase">{s.detail}</span>
+              </div>
+              <p class="text-zinc-500 text-sm leading-relaxed max-w-lg font-light">
+                {s.desc}
+              </p>
+              <a
+                href="#book"
+                class="mt-6 inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-zinc-500 group-hover:text-[#C9A84C] transition-colors duration-300"
+              >
+                Agendar cita
+                <span class="w-6 h-px bg-current group-hover:w-10 transition-all duration-300 inline-block"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: price + image -->
+          <div class="flex md:flex-col items-start md:items-end gap-6">
+            <span class="font-display font-light text-4xl text-white/80 group-hover:text-[#C9A84C] transition-colors duration-500">
+              {s.price}
+            </span>
+            <div class="w-28 h-20 md:w-36 md:h-28 overflow-hidden shrink-0">
+              <img
+                src={s.img}
+                alt={s.alt}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              />
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-20 pt-10 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <p class="text-zinc-500 text-sm font-light max-w-sm">
+        ¿No estás seguro qué servicio elegir? Nuestros especialistas te asesoran sin costo.
+      </p>
+      <a
+        href="#book"
+        class="bg-[#C9A84C] text-zinc-950 text-xs tracking-[0.2em] uppercase px-8 py-4 font-medium hover:bg-[#E8C97A] transition-colors duration-300 whitespace-nowrap shrink-0"
+      >
+        Reserva tu cita
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- About strip -->
+<section id="about" class="bg-zinc-900/40 border-y border-white/5 py-28 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <div>
+      <p class="text-[#C9A84C] text-xs tracking-[0.35em] uppercase mb-4 font-light">Nuestra filosofía</p>
+      <h2 class="font-display font-light text-white leading-tight mb-8" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+        El detalle es<br /><em class="italic">el arte</em>
+      </h2>
+      <p class="text-zinc-500 text-sm leading-loose font-light mb-6">
+        Cada corte es una decisión intencional. Cada trazo de navaja, un gesto preciso. En Lumina no solo te cortamos el cabello — diseñamos cómo quieres que el mundo te vea.
+      </p>
+      <p class="text-zinc-500 text-sm leading-loose font-light">
+        Fundados en 2020, con barberos entrenados en Barcelona y Ciudad de México, traemos una visión global a cada silla.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <div class="aspect-[3/4] overflow-hidden">
+        <img src="/images/haircut.png" alt="Corte" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+      </div>
+      <div class="aspect-[3/4] overflow-hidden mt-8">
+        <img src="/images/beard.png" alt="Barba" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+      </div>
+    </div>
+
+  </div>
+</section>

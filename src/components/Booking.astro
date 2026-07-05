@@ -1,0 +1,328 @@
+---
+// Booking.astro
+// WhatsApp number - update this to the real barber's number
+const WA_NUMBER = "51947373693"; // format: country code + number, no + or spaces
+---
+
+<section id="book" class="bg-zinc-900/30 border-y border-white/5 py-32 px-6">
+  <div
+    class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start"
+  >
+    <!-- Left: info -->
+    <div class="lg:sticky lg:top-24">
+      <p
+        class="text-[#C9A84C] text-xs tracking-[0.35em] uppercase mb-4 font-light"
+      >
+        Agenda tu visita
+      </p>
+      <h2
+        class="font-display font-light text-white leading-none mb-8"
+        style="font-size: clamp(2.5rem, 5vw, 4rem);"
+      >
+        Reserva<br /><em class="italic text-[#C9A84C]">tu cita</em>
+      </h2>
+      <p class="text-zinc-500 text-sm leading-loose font-light mb-10 max-w-sm">
+        Completa el formulario y te contactaremos por WhatsApp para confirmar tu
+        reserva. Sin filas, sin esperas — solo precisión cuando tú decides.
+      </p>
+
+      <!-- Contact details -->
+      <div class="space-y-5 border-t border-white/5 pt-8">
+        <div class="flex items-center gap-4">
+          <!-- Icon: clock -->
+          <div
+            class="w-9 h-9 border border-white/10 flex items-center justify-center shrink-0"
+          >
+            <svg
+              class="w-4 h-4 text-[#C9A84C]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="9"></circle><path
+                stroke-linecap="round"
+                d="M12 7v5l3 3"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-light">Lun–Vie 9:00–20:00</p>
+            <p class="text-zinc-600 text-xs tracking-wide">Sáb 9:00–18:00</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Icon: location -->
+          <div
+            class="w-9 h-9 border border-white/10 flex items-center justify-center shrink-0"
+          >
+            <svg
+              class="w-4 h-4 text-[#C9A84C]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                d="M12 21c-4-4.5-6-8-6-11a6 6 0 0 1 12 0c0 3-2 6.5-6 11z"
+              ></path><circle cx="12" cy="10" r="2"></circle>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-light">123 Avenida Elegancia</p>
+            <p class="text-zinc-600 text-xs tracking-wide">
+              Distrito Financiero, 10001
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Icon: WhatsApp -->
+          <div
+            class="w-9 h-9 border border-white/10 flex items-center justify-center shrink-0"
+          >
+            <svg
+              class="w-4 h-4 text-[#C9A84C]"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+              ></path>
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.534 5.843L.057 23.428a.5.5 0 0 0 .611.625l5.757-1.507A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.983-1.359l-.358-.213-3.715.973.99-3.624-.232-.374A9.818 9.818 0 1 1 12 21.818z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-light">+1 (555) 123-4567</p>
+            <p class="text-zinc-600 text-xs tracking-wide">
+              Respuesta inmediata por WhatsApp
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="bg-zinc-900/60 border border-white/5 p-8 md:p-10">
+      <form id="booking-form" class="space-y-7" novalidate>
+        <!-- Name -->
+        <div class="group">
+          <label
+            for="booking-name"
+            class="block text-xs tracking-[0.2em] uppercase text-zinc-500 mb-3 group-focus-within:text-[#C9A84C] transition-colors duration-300"
+          >
+            Nombre completo
+          </label>
+          <input
+            id="booking-name"
+            name="name"
+            type="text"
+            required
+            placeholder="Ej. Carlos Mendoza"
+            class="w-full bg-transparent border-b border-zinc-700 focus:border-[#C9A84C] outline-none text-white text-sm py-3 placeholder:text-zinc-700 transition-colors duration-300"
+          />
+        </div>
+
+        <!-- Service -->
+        <div class="group">
+          <label
+            for="booking-service"
+            class="block text-xs tracking-[0.2em] uppercase text-zinc-500 mb-3 group-focus-within:text-[#C9A84C] transition-colors duration-300"
+          >
+            Tipo de servicio
+          </label>
+          <div class="relative">
+            <select
+              id="booking-service"
+              name="service"
+              required
+              class="w-full bg-zinc-950 border-b border-zinc-700 focus:border-[#C9A84C] outline-none text-sm py-3 text-white appearance-none cursor-pointer transition-colors duration-300"
+            >
+              <option value="" disabled selected class="text-zinc-600"
+                >Selecciona un servicio</option
+              >
+              <option value="Corte de Precisión ($25)"
+                >Corte de Precisión — $25</option
+              >
+              <option value="Ritual de Barba ($15)"
+                >Ritual de Barba — $15</option
+              >
+              <option value="Experiencia Completa ($45)"
+                >Experiencia Completa — $45</option
+              >
+            </select>
+            <!-- Arrow -->
+            <svg
+              class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="group">
+          <label
+            for="booking-date"
+            class="block text-xs tracking-[0.2em] uppercase text-zinc-500 mb-3 group-focus-within:text-[#C9A84C] transition-colors duration-300"
+          >
+            Fecha preferida
+          </label>
+          <input
+            id="booking-date"
+            name="date"
+            type="date"
+            required
+            class="w-full bg-transparent border-b border-zinc-700 focus:border-[#C9A84C] outline-none text-white text-sm py-3 transition-colors duration-300 [color-scheme:dark]"
+          />
+        </div>
+
+        <!-- Time -->
+        <div class="group">
+          <label
+            for="booking-time"
+            class="block text-xs tracking-[0.2em] uppercase text-zinc-500 mb-3 group-focus-within:text-[#C9A84C] transition-colors duration-300"
+          >
+            Hora preferida
+          </label>
+          <div class="relative">
+            <select
+              id="booking-time"
+              name="time"
+              required
+              class="w-full bg-zinc-950 border-b border-zinc-700 focus:border-[#C9A84C] outline-none text-sm py-3 text-white appearance-none cursor-pointer transition-colors duration-300"
+            >
+              <option value="" disabled selected class="text-zinc-600"
+                >Selecciona un horario</option
+              >
+              {
+                [
+                  "9:00 AM",
+                  "10:00 AM",
+                  "11:00 AM",
+                  "12:00 PM",
+                  "1:00 PM",
+                  "2:00 PM",
+                  "3:00 PM",
+                  "4:00 PM",
+                  "5:00 PM",
+                  "6:00 PM",
+                  "7:00 PM",
+                ].map((t) => <option value={t}>{t}</option>)
+              }
+            </select>
+            <svg
+              class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 pointer-events-none"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <p
+          id="form-error"
+          class="hidden text-red-400 text-xs tracking-wide pt-1"
+        >
+          Por favor completa todos los campos antes de continuar.
+        </p>
+
+        <!-- Submit -->
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="group w-full flex items-center justify-center gap-3 bg-[#C9A84C] hover:bg-[#E8C97A] text-zinc-950 text-xs tracking-[0.25em] uppercase font-medium py-4 px-6 transition-all duration-300"
+          >
+            <!-- WhatsApp icon -->
+            <svg
+              class="w-4 h-4 shrink-0"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+              ></path>
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.534 5.843L.057 23.428a.5.5 0 0 0 .611.625l5.757-1.507A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.983-1.359l-.358-.213-3.715.973.99-3.624-.232-.374A9.818 9.818 0 1 1 12 21.818z"
+              ></path>
+            </svg>
+            Enviar por WhatsApp
+          </button>
+          <p class="text-zinc-700 text-xs text-center mt-4 tracking-wide">
+            Serás redirigido a WhatsApp con tu reserva pre-escrita.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ WA_NUMBER }}>
+  const form = document.getElementById("booking-form");
+  const errorMsg = document.getElementById("form-error");
+
+  // Set min date to today
+  const dateInput = document.getElementById("booking-date");
+  if (dateInput) {
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.setAttribute("min", today);
+  }
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = form.querySelector("#booking-name").value.trim();
+    const service = form.querySelector("#booking-service").value.trim();
+    const date = form.querySelector("#booking-date").value.trim();
+    const time = form.querySelector("#booking-time").value.trim();
+
+    if (!name || !service || !date || !time) {
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+
+    errorMsg.classList.add("hidden");
+
+    // Format date nicely
+    const [year, month, day] = date.split("-");
+    const months = [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre",
+    ];
+    const formattedDate = `${parseInt(day)} de ${months[parseInt(month) - 1]} de ${year}`;
+
+    // Build WhatsApp message
+    const message = `✂️ *Nueva Reserva — Lumina Barbershop*
+
+👤 *Nombre:* ${name}
+💈 *Servicio:* ${service}
+📅 *Fecha:* ${formattedDate}
+🕐 *Hora:* ${time}
+
+Por favor confirmen mi cita. ¡Gracias!`;
+
+    const encoded = encodeURIComponent(message);
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encoded}`;
+
+    window.open(waUrl, "_blank");
+  });
+</script>

@@ -1,0 +1,67 @@
+---
+// Hero.astro
+---
+
+<section class="relative h-screen min-h-[640px] flex items-end overflow-hidden">
+
+  <!-- Background image -->
+  <div class="absolute inset-0 animate-fade-in">
+    <img
+      src="/images/hero-minimal.png"
+      alt="Lumina Barbershop"
+      class="w-full h-full object-cover object-center"
+    />
+  </div>
+
+  <!-- Gradient overlays: dark bottom + left vignette -->
+  <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-zinc-950/10"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-zinc-950/30 to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pb-20 w-full">
+    <div class="max-w-2xl">
+
+      <!-- Eyebrow -->
+      <p class="animate-fade-up opacity-0 delay-100 text-[#C9A84C] text-xs tracking-[0.35em] uppercase mb-6 font-light">
+        Est. 2020 — La Experiencia Definitiva
+      </p>
+
+      <!-- Headline -->
+      <h1 class="animate-fade-up opacity-0 delay-200 font-display font-light text-white leading-none mb-8"
+        style="font-size: clamp(3rem, 8vw, 6.5rem);">
+        Arte.<br />
+        <em class="italic text-[#C9A84C]">Estilo.</em><br />
+        Precisión.
+      </h1>
+
+      <!-- Description -->
+      <p class="animate-fade-up opacity-0 delay-300 text-zinc-400 text-base leading-relaxed mb-10 max-w-md font-light">
+        Donde la tradición del barbero clásico se fusiona con la estética contemporánea. Un ritual de cuidado diseñado para el hombre moderno.
+      </p>
+
+      <!-- Actions -->
+      <div class="animate-fade-up opacity-0 delay-500 flex flex-wrap items-center gap-6">
+        <a
+          href="#book"
+          class="bg-[#C9A84C] text-zinc-950 text-xs tracking-[0.2em] uppercase px-8 py-4 font-medium hover:bg-[#E8C97A] transition-colors duration-300"
+        >
+          Reserva tu cita
+        </a>
+        <a
+          href="#services"
+          class="group text-xs tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-colors duration-300 flex items-center gap-3"
+        >
+          Servicios
+          <span class="w-8 h-px bg-zinc-600 group-hover:w-14 group-hover:bg-white transition-all duration-300 inline-block"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative side text -->
+  <div class="absolute right-8 bottom-24 hidden lg:flex flex-col items-center gap-4">
+    <span class="text-zinc-600 text-[10px] tracking-[0.4em] uppercase" style="writing-mode: vertical-lr;">Scroll para explorar</span>
+    <span class="w-px h-16 bg-gradient-to-b from-zinc-600 to-transparent"></span>
+  </div>
+
+</section>

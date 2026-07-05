@@ -1,0 +1,50 @@
+---
+// Gallery.astro
+
+const photos = [
+  { src: "/images/g1.png", alt: "Corte fade de precisión", span: "row-span-2" },
+  { src: "/images/g2.png", alt: "Interior Lumina Barbershop", span: "" },
+  { src: "/images/g3.png", alt: "Resultado final — look editorial", span: "" },
+  { src: "/images/g4.png", alt: "Ritual de navaja recta", span: "row-span-2" },
+  { src: "/images/g5.png", alt: "Herramientas premium", span: "" },
+  { src: "/images/g6.png", alt: "Silueta — skin fade perfecto", span: "" },
+];
+---
+
+<section id="gallery" class="bg-zinc-950 py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+      <div>
+        <p class="text-[#C9A84C] text-xs tracking-[0.35em] uppercase mb-4 font-light">Nuestro trabajo</p>
+        <h2 class="font-display font-light text-white leading-none" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+          Galería
+        </h2>
+      </div>
+      <p class="text-zinc-600 text-sm font-light max-w-xs text-right hidden sm:block">
+        Cada imagen cuenta la historia de un corte que transformó una presencia.
+      </p>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 auto-rows-[220px] md:auto-rows-[260px]">
+      {photos.map((photo) => (
+        <div class={`group relative overflow-hidden bg-zinc-900 ${photo.span}`}>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+          />
+          <!-- Overlay on hover -->
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+            <p class="text-white text-xs tracking-widest uppercase font-light translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+              {photo.alt}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
